@@ -16,7 +16,7 @@ public class SponsorServiceImpl implements SponsorService {
 	@Override
 	public String sayHelloSponsor() {
 		
-		return  "Hello Sponsor";
+		return  "Hello Sponsor: Hoje vamos  ";
 	}
 
 }

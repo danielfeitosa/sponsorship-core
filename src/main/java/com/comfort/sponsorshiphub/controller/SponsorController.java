@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
+import com.comfort.sponsorshiphub.component.Component;
+import com.comfort.sponsorshiphub.component.ComponentUtil;
 import com.comfort.sponsorshiphub.service.SponsorService;
 
 import lombok.RequiredArgsConstructor;
@@ -14,9 +16,13 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class SponsorController {
 	
+	@Autowired
+	private Component comp;
+	
 	@PostConstruct
 	public void init() {
 		 System.out.println("@PostConstruct" + SponsorController.class.getName());
+		 System.out.println();
 	}
 	
 	@Autowired @Qualifier("sponsorServiceImpl2")
@@ -28,7 +34,7 @@ public class SponsorController {
 	}
 	
 	public String sayHello() {
-	    return sponsorService.sayHelloSponsor();
+	    return sponsorService.sayHelloSponsor() + "  " +comp.acaoEmComum();
 	}
 	
 
