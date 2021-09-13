@@ -1,11 +1,8 @@
 package com.comfort.sponsorshiphub.bootstrap;
 
-import java.time.LocalDate;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.comfort.sponsorshiphub.model.Sponsor;
 import com.comfort.sponsorshiphub.service.SponsorService;
 
 @Component

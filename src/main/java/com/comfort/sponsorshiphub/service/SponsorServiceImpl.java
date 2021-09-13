@@ -1,5 +1,6 @@
 package com.comfort.sponsorshiphub.service;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -16,9 +17,14 @@ public class SponsorServiceImpl implements SponsorService {
 	private SponsorRepository repository;
 
 	@Override
-	public Sponsor getSponsor(UUID idSponsor) {
+	public Sponsor getSponsor(Long idSponsor) {
 
-		return repository.getById(idSponsor);
+		return Sponsor.builder()
+				.id(UUID.randomUUID())
+				.firstName("Daniel")
+				.birthDate(LocalDate.of(1984, 12, 20))
+				.lastName("Feitosa")
+				.build();
 	}
 
 	@Override

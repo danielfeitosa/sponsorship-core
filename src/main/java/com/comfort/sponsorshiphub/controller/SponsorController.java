@@ -5,7 +5,6 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class SponsorController {
 	
-	@Autowired @Qualifier("sponsorServiceImpl2")
+	@Autowired 
 	private final  SponsorService sponsorService;
 	
 	@PostConstruct
@@ -34,7 +33,7 @@ public class SponsorController {
 	}
 	
 	@GetMapping("/{id}")
-   public ResponseEntity<SponsorDto> getSponsor(@PathVariable("id") UUID id){
+   public ResponseEntity<SponsorDto> getSponsor(@PathVariable("id") Long id){
 	   Sponsor sponsor =   sponsorService.getSponsor(null);
 	   return new ResponseEntity<SponsorDto>(new SponsorDto(sponsor),HttpStatus.OK);
 	

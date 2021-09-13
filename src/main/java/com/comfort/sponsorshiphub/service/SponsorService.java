@@ -6,7 +6,7 @@ import com.comfort.sponsorshiphub.model.Sponsor;
 
 public interface SponsorService {
 	
-	Sponsor getSponsor(UUID idSponsor);
+	Sponsor getSponsor(Long idSponsor);
 	
 	String sayHelloSponsor();
 	

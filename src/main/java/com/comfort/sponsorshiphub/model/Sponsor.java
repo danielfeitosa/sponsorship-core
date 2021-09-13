@@ -6,15 +6,15 @@ import java.util.UUID;
 
 import javax.persistence.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
-
+@AllArgsConstructor
+@Builder
 
 public class Sponsor extends BaseEntity {
 	
@@ -24,7 +24,7 @@ public class Sponsor extends BaseEntity {
 	
 	private LocalDate birthDate;
 	
-    @Builder
+	@Builder
 	public Sponsor(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate) {
 		super(id, version, createdDate, lastModifiedDate);
 	
