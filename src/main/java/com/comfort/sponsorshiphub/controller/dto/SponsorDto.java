@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SponsorDto {
 	
-	private UUID uuid;
+	private Long uuid;
 	private String firstName;
 	private String lastName;
 	

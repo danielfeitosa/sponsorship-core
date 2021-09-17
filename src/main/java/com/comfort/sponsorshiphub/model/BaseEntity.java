@@ -24,7 +24,7 @@ import lombok.Setter;
 @MappedSuperclass
 public class BaseEntity {
 
-    public BaseEntity(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate) {
+    public BaseEntity(Long id, Long version, Timestamp createdDate, Timestamp lastModifiedDate) {
         this.id = id;
         this.version = version;
         this.createdDate = createdDate;
@@ -38,8 +38,8 @@ public class BaseEntity {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Type(type="org.hibernate.type.UUIDCharType")
-    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false )
-    private UUID id;
+    @Column( updatable = false, nullable = false )
+    private Long id;
 
     @Version
     private Long version;
