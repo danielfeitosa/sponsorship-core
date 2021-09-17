@@ -19,17 +19,15 @@ public class SponsorServiceImpl implements SponsorService {
 	private SponsorRepository repository;
 
 
-
-	@Override
-	public String sayHelloSponsor() {
-
-		return "Hello Sponsor: Hoje vamos  ";
-	}
-
 	@Override
 	public Sponsor save(Sponsor sponsor) {
 
 		return repository.save(sponsor);
+	}
+
+	@Override
+	public void update(Sponsor sponsor) {
+		repository.save(sponsor);
 	}
 
 	@Override

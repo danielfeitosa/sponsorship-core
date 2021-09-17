@@ -6,21 +6,18 @@ import java.util.UUID;
 
 import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-@Getter
-@Setter
+
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@Data
 
 public class Sponsor  {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,9 +10,11 @@ public interface SponsorService {
 	
 
 	
-	String sayHelloSponsor();
+
 	
 	Sponsor save(Sponsor sponsor);
+
+	void update(Sponsor sponsor);
 
 	List<Sponsor> findAll();
 

@@ -1,5 +1,7 @@
 package com.comfort.sponsorshiphub.controller;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,7 +39,12 @@ public class SponsorController {
 
 	@GetMapping
 	public List<Sponsor> findByName(String name){
-    	return sponsorService.findByName(name).orElseThrow(()-> new ElementoNaoEncontrado());
+    	return sponsorService.findByName(name).orElse(Collections.emptyList());
+	}
+
+	@PutMapping
+	public void update(@RequestBody Sponsor sponsor){
+    	 sponsorService.update(sponsor);
 	}
 
 

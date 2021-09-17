@@ -22,23 +22,6 @@ public class SponsorServiceTest {
 	}
 	
 	
-	@Test
-	public void testar() {
-		
-		assertTrue(sponsorService.sayHelloSponsor() != null);
-		
-		
-		
-	}
-	
-	
-	@Test
-	public void testar2() {
-		
-		assertTrue(sponsorService.sayHelloSponsor().equals("Hello Sponsor: Hoje vamos  "));
-		
-		
-		
-	}
+
 
 }

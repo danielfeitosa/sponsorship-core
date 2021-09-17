@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ class SponsorControllerTest {
        BDDMockito.when(service.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(SponsorCreator.createSponsorSucess()));
        BDDMockito.when(service.save(ArgumentMatchers.any())).thenReturn(SponsorCreator.createSponsorSucess());
        BDDMockito.when(service.findByName(ArgumentMatchers.anyString())).thenReturn(Optional.of(List.of(SponsorCreator.createSponsorSucess())));
-
+       BDDMockito.doNothing().when(service).update(ArgumentMatchers.any());
     }
 
     @Test
@@ -44,9 +45,18 @@ class SponsorControllerTest {
     void save_sponsor_WhenSuccessful(){
      Sponsor sponsor= controller.save(ArgumentMatchers.any());
      Assertions.assertThat(sponsor).isNotNull();
-     Assertions.assertThat(sponsor.getFirstName()).isEqualTo(SponsorCreator.createSponsorSucess().getFirstName());
+     Assertions.assertThat(sponsor).isEqualTo(SponsorCreator.createSponsorSucess());
+    }
+
+
+    @Test
+    @DisplayName("Update a sponsor with success")
+    void update_sponsor_WhenSuccessful(){
+     Assertions.assertThatCode(()-> controller.update(ArgumentMatchers.any()));
 
     }
+
+
     @Test
     @DisplayName("Find a sponsor from id with success")
     void findById_ReturnSponsor_WhenSuccessful(){
@@ -65,8 +75,16 @@ class SponsorControllerTest {
         Long expectId = SponsorCreator.createSponsorSucess().getId();
         List<Sponsor> sponsorList=  controller.findByName(ArgumentMatchers.anyString());
         Assertions.assertThat(sponsorList).isNotNull();
+    }
 
 
+    @Test
+    @DisplayName("Find a sponsor from name empty list")
+    void findByName_EmptyList_WhenSuccessful(){
+        BDDMockito.when(service.findByName(ArgumentMatchers.anyString())).thenReturn(Optional.empty());
+
+        List<Sponsor> sponsorList=  controller.findByName(ArgumentMatchers.anyString());
+        Assertions.assertThat(sponsorList).isNotNull().isEmpty();
     }
 
 
