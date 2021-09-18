@@ -40,6 +40,7 @@ class SponsorControllerTest {
        BDDMockito.doNothing().when(service).update(ArgumentMatchers.any());
     }
 
+
     @Test
     @DisplayName("Save a sponsor with success")
     void save_sponsor_WhenSuccessful(){
@@ -53,7 +54,6 @@ class SponsorControllerTest {
     @DisplayName("Update a sponsor with success")
     void update_sponsor_WhenSuccessful(){
      Assertions.assertThatCode(()-> controller.update(ArgumentMatchers.any()));
-
     }
 
 
