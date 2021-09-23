@@ -1,9 +1,17 @@
 
 spring:
   datasource:
-   url: jdbc:h2:mem:sponsorshipdb
-   driverClassName: org.h2.Driver
-   username: sa
-   password: password
+    url: jdbc:mysql://localhost:3350/sponsorshipDB?&createDatabaseIfNotExist=true
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
-   database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+

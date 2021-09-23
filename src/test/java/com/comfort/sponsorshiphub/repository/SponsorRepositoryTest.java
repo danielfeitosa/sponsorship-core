@@ -1,23 +1,25 @@
 package com.comfort.sponsorshiphub.repository;
 
-import com.comfort.sponsorshiphub.model.Sponsor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import com.comfort.sponsorshiphub.util.SponsorCreator;
-import lombok.extern.log4j.Log4j2;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 
-import java.time.LocalDate;
-import java.util.Optional;
+import com.comfort.sponsorshiphub.model.Sponsor;
+import com.comfort.sponsorshiphub.util.SponsorCreator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import lombok.extern.log4j.Log4j2;
 @DataJpaTest
 @DisplayName("Testes as classes do repository do sponsor")
 @Log4j2
+@ActiveProfiles("test")
+@AutoConfigureTestDatabase(replace = Replace.NONE)
 class SponsorRepositoryTest {
 
     @Autowired

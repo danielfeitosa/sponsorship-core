@@ -1,12 +1,20 @@
 
+
 spring:
+  profiles:
+    active: dev
   datasource:
-   url: jdbc:mysql://localhost:3310/sponsorshipDB?useSSL=false&createDatabaseIfNotExist=true
+   url: jdbc:mysql://localhost:3350/sponsorshipDB?&createDatabaseIfNotExist=true
    username: root
    password: password
+   driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
-   show-sql: true
-   hibernate:
-     ddl-auto: update
+    show-sql: true
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 

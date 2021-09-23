@@ -8,20 +8,20 @@ services:
   # MySQL Database
   db:
     image: mysql:8
-    container_name: mysql-camarapp-dev
+    container_name: mysql-sponsorshiphub-dev
     restart: unless-stopped    
     volumes:
-      - /Users/danielfeitosa/projetos/camarapp/data/mysql:/var/lib/mysql
+      - /Users/danielfeitosa/projetos/sponsorship_hub/data/mysql:/var/lib/mysql
     expose:
-      - 3310
+      - 3350
     ports:
-      - "3310:3306"
+      - "3350:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=password
     networks:
-      - network-camarapp-dev
+      - mysql-sponsorshiphub-network-dev
 
 # Networks      
-networks: 
-  network-camarapp-dev:
+networks:
+  mysql-sponsorshiphub-network-dev:
     driver: bridge
