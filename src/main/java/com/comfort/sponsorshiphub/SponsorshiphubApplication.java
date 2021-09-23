@@ -8,9 +8,7 @@ public class SponsorshiphubApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SponsorshiphubApplication.class, args);
-	
-		
-		 
+
 	}
 
 }

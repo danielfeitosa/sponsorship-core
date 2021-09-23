@@ -16,12 +16,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SponsorServiceImpl implements SponsorService {
 
-	private SponsorRepository repository;
+	private final SponsorRepository repository;
 
 
 	@Override
 	public Sponsor save(Sponsor sponsor) {
-
 		return repository.save(sponsor);
 	}
 

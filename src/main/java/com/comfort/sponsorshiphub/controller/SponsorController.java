@@ -24,9 +24,11 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class SponsorController {
 	
-	@Autowired 
+
 	private final  SponsorService sponsorService;
-	
+
+
+
 
     @PostMapping
 	public Sponsor save(@RequestBody Sponsor sponsor){
