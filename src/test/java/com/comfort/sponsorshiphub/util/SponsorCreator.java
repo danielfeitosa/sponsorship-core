@@ -8,7 +8,7 @@ public class SponsorCreator {
 
 
 
-    public static Sponsor createSponsorSucess(){
+    public static Sponsor createSponsorSuccess(){
         return Sponsor.builder()
                 .id(1L)
                 .firstName("Daniel")

@@ -33,10 +33,10 @@ class SponsorControllerTest {
     @BeforeEach
     void setUp(){
 
-       BDDMockito.when(service.findAll()).thenReturn( List.of(SponsorCreator.createSponsorSucess()));
-       BDDMockito.when(service.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(SponsorCreator.createSponsorSucess()));
-       BDDMockito.when(service.save(ArgumentMatchers.any())).thenReturn(SponsorCreator.createSponsorSucess());
-       BDDMockito.when(service.findByName(ArgumentMatchers.anyString())).thenReturn(Optional.of(List.of(SponsorCreator.createSponsorSucess())));
+       BDDMockito.when(service.findAll()).thenReturn( List.of(SponsorCreator.createSponsorSuccess()));
+       BDDMockito.when(service.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(SponsorCreator.createSponsorSuccess()));
+       BDDMockito.when(service.save(ArgumentMatchers.any())).thenReturn(SponsorCreator.createSponsorSuccess());
+       BDDMockito.when(service.findByName(ArgumentMatchers.anyString())).thenReturn(Optional.of(List.of(SponsorCreator.createSponsorSuccess())));
        BDDMockito.doNothing().when(service).update(ArgumentMatchers.any());
     }
 
@@ -46,7 +46,7 @@ class SponsorControllerTest {
     void save_sponsor_WhenSuccessful(){
      Sponsor sponsor= controller.save(ArgumentMatchers.any());
      Assertions.assertThat(sponsor).isNotNull();
-     Assertions.assertThat(sponsor).isEqualTo(SponsorCreator.createSponsorSucess());
+     Assertions.assertThat(sponsor).isEqualTo(SponsorCreator.createSponsorSuccess());
     }
 
 
@@ -60,11 +60,11 @@ class SponsorControllerTest {
     @Test
     @DisplayName("Find a sponsor from id with success")
     void findById_ReturnSponsor_WhenSuccessful(){
-        Long expectId = SponsorCreator.createSponsorSucess().getId();
+        Long expectId = SponsorCreator.createSponsorSuccess().getId();
         Sponsor sponsor=  controller.findById(ArgumentMatchers.anyLong());
         Assertions.assertThat(sponsor.getId()).isNotNull();
         Assertions.assertThat(sponsor.getId()).isEqualTo(expectId);
-        Assertions.assertThat(sponsor.getFirstName()).isEqualTo(SponsorCreator.createSponsorSucess().getFirstName());
+        Assertions.assertThat(sponsor.getFirstName()).isEqualTo(SponsorCreator.createSponsorSuccess().getFirstName());
 
     }
 
@@ -72,7 +72,7 @@ class SponsorControllerTest {
     @Test
     @DisplayName("Find a sponsor from name with success")
     void findByName_ReturnSponsor_WhenSuccessful(){
-        Long expectId = SponsorCreator.createSponsorSucess().getId();
+        Long expectId = SponsorCreator.createSponsorSuccess().getId();
         List<Sponsor> sponsorList=  controller.findByName(ArgumentMatchers.anyString());
         Assertions.assertThat(sponsorList).isNotNull();
     }

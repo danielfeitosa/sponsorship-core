@@ -26,7 +26,7 @@ class SponsorRepositoryTest {
     @Test
     @DisplayName("Test save a Sponsor with success")
     void save_sponsor_whenSuccessful(){
-       Sponsor sponsor= this.sponsorRepository.save(SponsorCreator.createSponsorSucess());
+       Sponsor sponsor= this.sponsorRepository.save(SponsorCreator.createSponsorSuccess());
        assertEquals("Daniel",sponsor.getFirstName());
        assertEquals("Gomes Feitosa",sponsor.getLastName());
        assertFalse(sponsor.getId()==null);
@@ -35,7 +35,7 @@ class SponsorRepositoryTest {
     @Test
     @DisplayName("Test update a Sponsor with success")
     void update_sponsor_whenSuccessful(){
-        Sponsor sponsor= this.sponsorRepository.save(SponsorCreator.createSponsorSucess());
+        Sponsor sponsor= this.sponsorRepository.save(SponsorCreator.createSponsorSuccess());
       sponsor.setLastName("Jardim Feitosa");
       Sponsor sponsorUpdate= sponsorRepository.save(sponsor);
       log.info(sponsorUpdate.getLastName());
@@ -48,7 +48,7 @@ class SponsorRepositoryTest {
     @Test
     @DisplayName("Test delete a Sponsor with success")
     void delete_sponsor_whenSuccessful(){
-        Sponsor sponsor= this.sponsorRepository.save(SponsorCreator.createSponsorSucess());
+        Sponsor sponsor= this.sponsorRepository.save(SponsorCreator.createSponsorSuccess());
         sponsor.setLastName("Jardim Feitosa");
         Sponsor sponsorUpdate= sponsorRepository.save(sponsor);
         assertEquals(sponsor.getLastName(),sponsorUpdate.getLastName());
