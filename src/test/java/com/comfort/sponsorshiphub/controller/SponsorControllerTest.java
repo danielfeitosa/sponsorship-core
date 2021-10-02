@@ -1,5 +1,6 @@
 package com.comfort.sponsorshiphub.controller;
 
+import com.comfort.sponsorshiphub.mapper.SponsorMapper;
 import com.comfort.sponsorshiphub.model.Sponsor;
 import com.comfort.sponsorshiphub.service.SponsorService;
 import com.comfort.sponsorshiphub.util.SponsorCreator;
@@ -13,6 +14,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
@@ -28,12 +30,14 @@ class SponsorControllerTest {
    private SponsorController controller;
    @Mock
    private SponsorService service;
+    @Mock
+   private SponsorMapper sponsorMapper;
 
 
 
     @BeforeEach
     void setUp(){
-
+        BDDMockito.when(sponsorMapper.dtoToEntity(ArgumentMatchers.any())).thenReturn(SponsorCreator.createSponsorSuccess());
        BDDMockito.when(service.findAll()).thenReturn( List.of(SponsorCreator.createSponsorSuccess()));
        BDDMockito.when(service.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(SponsorCreator.createSponsorSuccess()));
        BDDMockito.when(service.save(ArgumentMatchers.any())).thenReturn(SponsorCreator.createSponsorSuccess());
@@ -45,16 +49,17 @@ class SponsorControllerTest {
     @Test
     @DisplayName("Save a sponsor with success")
     void save_sponsor_WhenSuccessful(){
-     Sponsor sponsor= controller.save(ArgumentMatchers.any());
-     Assertions.assertThat(sponsor).isNotNull();
-     Assertions.assertThat(sponsor).isEqualTo(SponsorCreator.createSponsorSuccess());
+     Sponsor sponsorCreated= controller.save(SponsorCreator.createSponsorDtoSuccess());
+     Assertions.assertThat(sponsorCreated).isNotNull();
+     Assertions.assertThat(sponsorCreated).isEqualTo(SponsorCreator.createSponsorSuccess());
     }
 
 
     @Test
     @DisplayName("Update a sponsor with success")
     void update_sponsor_WhenSuccessful(){
-     Assertions.assertThatCode(()-> controller.update(ArgumentMatchers.any()));
+
+        Assertions.assertThatCode(()-> controller.update(ArgumentMatchers.any()));
     }
 
 

@@ -1,5 +1,6 @@
 package com.comfort.sponsorshiphub.controller.dto;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import com.comfort.sponsorshiphub.model.Sponsor;
@@ -15,15 +16,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SponsorDto {
 	
-	private Long uuid;
+	private Long id;
 	private String firstName;
 	private String lastName;
-	
-	public SponsorDto(Sponsor sponsor) {
-		this.uuid = sponsor.getId();
-		this.firstName =sponsor.getFirstName();
-		this.lastName = sponsor.getLastName();
-		
-	}
+	private LocalDate birthDate;
+
 
 }

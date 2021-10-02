@@ -3,6 +3,8 @@ package com.comfort.sponsorshiphub.controller;
 import java.util.Collections;
 import java.util.List;
 
+import com.comfort.sponsorshiphub.controller.dto.SponsorDto;
+import com.comfort.sponsorshiphub.mapper.SponsorMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,11 +26,11 @@ public class SponsorController {
 	
 
 	private final  SponsorService sponsorService;
-
+    private final SponsorMapper sponsorMapper;
 
     @PostMapping
-	public Sponsor save(@RequestBody Sponsor sponsor){
-		return sponsorService.save(sponsor);
+	public Sponsor save(@RequestBody SponsorDto dto){
+    	return sponsorService.save(sponsorMapper.dtoToEntity(dto));
 	}
 	@GetMapping("/{id}")
 	public Sponsor findById(@PathVariable Long id){
@@ -41,8 +43,9 @@ public class SponsorController {
 	}
 
 	@PutMapping
-	public void update(@RequestBody Sponsor sponsor){
-    	 sponsorService.update(sponsor);
+	public void update(@RequestBody SponsorDto dto){
+
+    	sponsorService.update(sponsorMapper.dtoToEntity(dto));
 	}
 
 
