@@ -10,8 +10,6 @@ public interface SponsorService {
 	
 
 	
-
-	
 	Sponsor save(Sponsor sponsor);
 
 	void update(Sponsor sponsor);
