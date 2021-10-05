@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		User.UserBuilder user1 = User.builder().username("daniel").password("{noop}teste").roles("USER");
 		  auth.inMemoryAuthentication().withUser(user1);
 		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		log.info("teste");
+
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 	}
 	

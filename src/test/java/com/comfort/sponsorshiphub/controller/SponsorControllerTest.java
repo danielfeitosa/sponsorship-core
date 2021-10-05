@@ -1,5 +1,6 @@
 package com.comfort.sponsorshiphub.controller;
 
+import com.comfort.sponsorshiphub.controller.dto.SponsorDto;
 import com.comfort.sponsorshiphub.mapper.SponsorMapper;
 import com.comfort.sponsorshiphub.model.Sponsor;
 import com.comfort.sponsorshiphub.service.SponsorService;
@@ -37,6 +38,7 @@ class SponsorControllerTest {
 
     @BeforeEach
     void setUp(){
+        BDDMockito.when(sponsorMapper.entityToDto(ArgumentMatchers.any())).thenReturn(SponsorCreator.createSponsorDtoSuccess());
         BDDMockito.when(sponsorMapper.dtoToEntity(ArgumentMatchers.any())).thenReturn(SponsorCreator.createSponsorSuccess());
        BDDMockito.when(service.findAll()).thenReturn( List.of(SponsorCreator.createSponsorSuccess()));
        BDDMockito.when(service.findById(ArgumentMatchers.anyLong())).thenReturn(Optional.of(SponsorCreator.createSponsorSuccess()));
@@ -49,9 +51,9 @@ class SponsorControllerTest {
     @Test
     @DisplayName("Save a sponsor with success")
     void save_sponsor_WhenSuccessful(){
-     Sponsor sponsorCreated= controller.save(SponsorCreator.createSponsorDtoSuccess());
+     SponsorDto sponsorCreated= controller.save(SponsorCreator.createSponsorDtoSuccess());
      Assertions.assertThat(sponsorCreated).isNotNull();
-     Assertions.assertThat(sponsorCreated).isEqualTo(SponsorCreator.createSponsorSuccess());
+     Assertions.assertThat(sponsorCreated).isEqualTo(SponsorCreator.createSponsorDtoSuccess());
     }
 
 
@@ -67,7 +69,7 @@ class SponsorControllerTest {
     @DisplayName("Find a sponsor from id with success")
     void findById_ReturnSponsor_WhenSuccessful(){
         Long expectId = SponsorCreator.createSponsorSuccess().getId();
-        Sponsor sponsor=  controller.findById(ArgumentMatchers.anyLong());
+        SponsorDto sponsor=  controller.findById(ArgumentMatchers.anyLong());
         Assertions.assertThat(sponsor.getId()).isNotNull();
         Assertions.assertThat(sponsor.getId()).isEqualTo(expectId);
         Assertions.assertThat(sponsor.getFirstName()).isEqualTo(SponsorCreator.createSponsorSuccess().getFirstName());

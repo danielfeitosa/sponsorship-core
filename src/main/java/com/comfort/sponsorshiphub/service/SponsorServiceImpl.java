@@ -42,4 +42,9 @@ public class SponsorServiceImpl implements SponsorService {
 		return repository.findByFirstName(name);
 	}
 
+	@Override
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+
 }
