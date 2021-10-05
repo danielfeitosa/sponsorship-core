@@ -8,6 +8,7 @@ import com.comfort.sponsorshiphub.controller.dto.SponsorDto;
 import com.comfort.sponsorshiphub.mapper.SponsorMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +51,11 @@ public class SponsorController {
 	public List<SponsorDto> findAll(){
 		return sponsorService.findAll().stream().map(sponsor -> sponsorMapper.entityToDto(sponsor)).collect(Collectors.toList());
 	}
-
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Retorna list of Sponsor by name"),
+			@ApiResponse(responseCode = "403", description = "You don't have permission"),
+			@ApiResponse(responseCode = "404", description = "Sponsor was not found"),
+	})
 	@GetMapping("/name/{name}")
 	public List<Sponsor> findByName(String name){
     	return sponsorService.findByName(name).orElse(Collections.emptyList());
