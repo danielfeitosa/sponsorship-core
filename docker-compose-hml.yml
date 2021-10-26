@@ -10,7 +10,7 @@ services:
     image: sposnorship-core-spring
     container_name: sponsorship-core-spring
     environment:
-      - spring.datasource.url=${URL_RDS}:3306/sponsorshipDB?&createDatabaseIfNotExist=true
+      - spring.datasource.url=jdbc:mysql://${URL_RDS}:3306/sponsorshipDB?&createDatabaseIfNotExist=true
       - aws.access-key=${ACCESS_KEY}
       - aws.secret-key=${SECRET_KEY}
     restart: unless-stopped
