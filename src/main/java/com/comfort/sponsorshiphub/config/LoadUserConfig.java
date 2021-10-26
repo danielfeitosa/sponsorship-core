@@ -14,9 +14,9 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 public class LoadUserConfig {
-	@Autowired
+
 	private final SHUserDetailsRepository userRepository;
-    @Autowired
+
 	private final PasswordEncoder passwordEncoder;
 
 	@PostConstruct

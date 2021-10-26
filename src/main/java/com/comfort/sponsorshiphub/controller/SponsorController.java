@@ -11,13 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.comfort.sponsorshiphub.exception.ElementoNaoEncontrado;
 import com.comfort.sponsorshiphub.model.Sponsor;
@@ -39,6 +33,8 @@ public class SponsorController {
 	public SponsorDto save(@RequestBody SponsorDto dto){
     	return sponsorMapper.entityToDto(sponsorService.save(sponsorMapper.dtoToEntity(dto)));
 	}
+
+
 
 	@GetMapping("/{id}")
 	@Operation(summary = "Find a Sponsor by Id" , description = "Find a Sponsor by Id")
@@ -68,7 +64,7 @@ public class SponsorController {
     	return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
    @Operation(summary = "delete sponsor by id")
-
+   @DeleteMapping
 	public  ResponseEntity<Void> delete(@PathVariable Long id){
     	sponsorService.delete(id);
 		return new  ResponseEntity<>(HttpStatus.NO_CONTENT);

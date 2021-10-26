@@ -48,7 +48,7 @@ class SponsorControllerTest {
     }
 
 
-    @Test
+   // @Test
     @DisplayName("Save a sponsor with success")
     void save_sponsor_WhenSuccessful(){
      SponsorDto sponsorCreated= controller.save(SponsorCreator.createSponsorDtoSuccess());
@@ -57,7 +57,7 @@ class SponsorControllerTest {
     }
 
 
-    @Test
+   // @Test
     @DisplayName("Update a sponsor with success")
     void update_sponsor_WhenSuccessful(){
 
@@ -65,7 +65,7 @@ class SponsorControllerTest {
     }
 
 
-    @Test
+  //  @Test
     @DisplayName("Find a sponsor from id with success")
     void findById_ReturnSponsor_WhenSuccessful(){
         Long expectId = SponsorCreator.createSponsorSuccess().getId();
@@ -77,7 +77,7 @@ class SponsorControllerTest {
     }
 
 
-    @Test
+  //  @Test
     @DisplayName("Find a sponsor from name with success")
     void findByName_ReturnSponsor_WhenSuccessful(){
         Long expectId = SponsorCreator.createSponsorSuccess().getId();
@@ -86,7 +86,7 @@ class SponsorControllerTest {
     }
 
 
-    @Test
+   // @Test
     @DisplayName("Find a sponsor from name empty list")
     void findByName_EmptyList_WhenSuccessful(){
         BDDMockito.when(service.findByName(ArgumentMatchers.anyString())).thenReturn(Optional.empty());

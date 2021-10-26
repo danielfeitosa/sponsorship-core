@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -24,7 +25,7 @@ import lombok.extern.log4j.Log4j2;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
 @RequiredArgsConstructor
-@Profile({"dev"})
+@Profile({"dev","hml"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	private final SHUserDetailsService userDetailsService;
@@ -54,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		return  new BCryptPasswordEncoder();
 	}
 	
 

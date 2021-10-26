@@ -1,0 +1,33 @@
+# CONSTRUIR CONTAINER : docker-compose -f docker-compose-hml.yml up --build -d
+  # DESTRUIR CONTAINER  : docker-compose -f docker-compose-hml.yml down
+version: '3.8'
+
+# Services
+services:
+
+  # Springboot Application
+  app:
+    image: sposnorship-core-spring
+    container_name: sponsorship-core-spring
+    environment:
+      - spring.datasource.url=${URL_RDS}:3306/sponsorshipDB?&createDatabaseIfNotExist=true
+      - aws.access-key=${ACCESS_KEY}
+      - aws.secret-key=${SECRET_KEY}
+    restart: unless-stopped
+    expose:
+      - 8088
+    ports:
+      - "8088:8080"
+    build:
+      context: .
+      args:
+        env: hml
+    networks:
+      - network-sponsorship-hml
+
+# Networks
+networks:
+  network-sponsorship-hml:
+    driver: bridge
+
+
